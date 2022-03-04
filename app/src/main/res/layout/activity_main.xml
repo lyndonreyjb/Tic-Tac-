@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="40dp"
-        android:text="Player X"
+        android:text="@string/player_x"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/play_btn"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Player O"
+        android:text="@string/player_o"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/play_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Tic Tac Toe"
+        android:text="@string/tic_tac_toe"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -67,23 +67,28 @@
                 android:id="@+id/btn_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#009688" />
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#009688"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btn_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#009688" />
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#009688"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btn_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="#009688"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
         </TableRow>
 
         <TableRow
@@ -95,23 +100,28 @@
                 android:id="@+id/btn_4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="#009688"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btn_5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#009688" />
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#009688"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btn_6"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#009688" />
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#009688"
+                tools:ignore="SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
         </TableRow>
 
         <TableRow
@@ -123,23 +133,28 @@
                 android:id="@+id/btn_7"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#009688" />
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#009688"
+                tools:ignore="SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btn_8"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#009688" />
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#009688"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btn_9"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="#009688"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                style="?android:attr/buttonBarButtonStyle" />
         </TableRow>
 
     </TableLayout>
@@ -150,10 +165,11 @@
         android:layout_height="80dp"
         android:layout_marginBottom="100dp"
         android:backgroundTint="#009688"
-        android:text="Play Again"
+        android:text="@string/play_again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
