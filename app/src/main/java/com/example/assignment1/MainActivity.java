@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        //
+        // Get the id of the buttons
         String btnId = view.getResources().getResourceEntryName(view.getId());
         int num = Integer.parseInt(btnId.substring(btnId.length() - 1, btnId.length()));
         //
