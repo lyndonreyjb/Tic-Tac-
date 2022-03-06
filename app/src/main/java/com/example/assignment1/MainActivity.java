@@ -2,22 +2,26 @@ package com.example.assignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView x_score, o_score;
+
     private Button play_btn, btn_winner;
     private Button[] btn = new Button[9];
 
     int Counter = 0;
 
-    int[] game = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
     int[][] winningComb = {
             {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}
@@ -39,7 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 for(int i = 0; i < 9; i++){
                     btn[i].setText("");
+                    btn[i].animate()
+                            .rotation(0)
+                            .setDuration(0);
                 }
+
+                btn_winner.animate()
+                        .scaleX(0)
+                        .scaleY(0)
+                        .setDuration(0);
 
             }
         });
@@ -74,7 +86,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String btnId = view.getResources().getResourceEntryName(view.getId());
         int num = Integer.parseInt(btnId.substring(btnId.length() - 1, btnId.length()));
 
+
         btn[num - 1].animate().rotation(360).setDuration(3000);
+
 
         if (btn[num - 1].getText() == "") {
             Counter++;
@@ -91,6 +105,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void CheckWin() {
+
+        btn_winner.animate()
+                .scaleX(1.4f)
+                .scaleY(1.4f)
+                .setDuration(2000);
 
         for (int i = 0; i < winningComb.length; i++) {
             if (btn[winningComb[i][0]].getText() == "X" && btn[winningComb[i][1]].getText() == "X" && btn[winningComb[i][2]].getText() == "X") {

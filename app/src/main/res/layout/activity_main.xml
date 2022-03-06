@@ -167,8 +167,8 @@
 
     <Button
         android:id="@+id/btn_winner"
-        android:layout_width="334dp"
-        android:layout_height="363dp"
+        android:layout_width="252dp"
+        android:layout_height="280dp"
         android:backgroundTint="#009688"
         android:textSize="34sp"
         android:visibility="invisible"
