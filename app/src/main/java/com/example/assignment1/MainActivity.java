@@ -7,19 +7,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView x_score, o_score;
-    private Button play_btn;
-    private Button [] btn = new Button[9];
+    private Button play_btn, btn_winner;
+    private Button[] btn = new Button[9];
 
     int Counter = 0;
 
-    int[][] winningComb = {
-            {0,1,2},{3,4,5},{6,7,8},{0,4,8},{2,4,6},{0,3,6},{1,4,7},{2,5,8}
-    };
+    int[] game = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
+    int[][] winningComb = {
+            {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}
+    };
 
 
     @Override
@@ -27,10 +29,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        o_score = findViewById(R.id.o_score);
-        x_score = findViewById(R.id.x_score);
         play_btn = findViewById(R.id.play_btn);
+        play_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Counter = 0;
+                btn_winner.setVisibility(findViewById(R.id.btn_winner).INVISIBLE);
+
+                for(int i = 0; i < 9; i++){
+                    btn[i].setText("");
+                }
+
+            }
+        });
+
+        btn_winner = findViewById(R.id.btn_winner);
 
         btn[0] = findViewById(R.id.btn_1);
         btn[1] = findViewById(R.id.btn_2);
@@ -54,22 +68,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void onClick(View view){
+    @Override
+    public void onClick(View view) {
 
-        int count = Counter++;
+        String btnId = view.getResources().getResourceEntryName(view.getId());
+        int num = Integer.parseInt(btnId.substring(btnId.length() - 1, btnId.length()));
 
-        for(int i = 0; i < btn.length; i++){
+        btn[num - 1].animate().rotation(360).setDuration(3000);
 
-            if(view.getId() == R.id.name){
-                if(count % 2 == 0) {
-                    btn[0].setText("O");
-                }else{
-                    btn[0].setText("X");
-                }
+        if (btn[num - 1].getText() == "") {
+            Counter++;
+            if (Counter % 2 == 0) {
+                btn[num - 1].setText("O");
+            } else {
+                btn[num - 1].setText("X");
             }
-
         }
 
+        // Check Win Method
+        CheckWin();
+    }
+
+
+    public void CheckWin() {
+
+        for (int i = 0; i < winningComb.length; i++) {
+            if (btn[winningComb[i][0]].getText() == "X" && btn[winningComb[i][1]].getText() == "X" && btn[winningComb[i][2]].getText() == "X") {
+                btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
+                btn_winner.setText("Player X Wins!");
+
+            }  else if (btn[winningComb[i][0]].getText() == "O" && btn[winningComb[i][1]].getText() == "O" && btn[winningComb[i][2]].getText() == "O") {
+                btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
+                btn_winner.setText("Player O Wins!");
+            }
+        }
+
+        if(Counter == 9){
+            btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
+            btn_winner.setText("It is a Draw!");
+        }
     }
 
 }
+
+
+
+
+
+
