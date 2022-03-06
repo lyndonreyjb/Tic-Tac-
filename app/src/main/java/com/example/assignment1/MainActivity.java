@@ -17,11 +17,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+
     private Button play_btn, btn_winner;
     private Button[] btn = new Button[9];
 
     int Counter = 0;
-
 
     int[][] winningComb = {
             {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}
