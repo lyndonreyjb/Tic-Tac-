@@ -17,30 +17,31 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-
+    // Button for the play again and grid buttons
     private Button play_btn, btn_winner;
+    // Button array for all 9 buttons
     private Button[] btn = new Button[9];
-
+    // Counter for each player and turn
     int Counter = 0;
-
+    // 2D array for the winning combinations
     int[][] winningComb = {
             {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // Get the id of the play again button
         play_btn = findViewById(R.id.play_btn);
+
+        // Play again button click
         play_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // Reset all the counter animation and empty the buttons
                 Counter = 0;
                 btn_winner.setVisibility(findViewById(R.id.btn_winner).INVISIBLE);
-
                 for(int i = 0; i < 9; i++){
                     btn[i].setText("");
                     btn[i].animate()
@@ -52,12 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .scaleX(0)
                         .scaleY(0)
                         .setDuration(0);
-
             }
         });
 
+        // The pop up button to display the winner
         btn_winner = findViewById(R.id.btn_winner);
 
+        //
         btn[0] = findViewById(R.id.btn_1);
         btn[1] = findViewById(R.id.btn_2);
         btn[2] = findViewById(R.id.btn_3);
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn[7] = findViewById(R.id.btn_8);
         btn[8] = findViewById(R.id.btn_9);
 
+        // For the on click buttons
         btn[0].setOnClickListener(this);
         btn[1].setOnClickListener(this);
         btn[2].setOnClickListener(this);
@@ -83,13 +86,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+        //
         String btnId = view.getResources().getResourceEntryName(view.getId());
         int num = Integer.parseInt(btnId.substring(btnId.length() - 1, btnId.length()));
-
-
+        //
         btn[num - 1].animate().rotation(360).setDuration(3000);
-
-
+        //
         if (btn[num - 1].getText() == "") {
             Counter++;
             if (Counter % 2 == 0) {
@@ -98,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn[num - 1].setText("X");
             }
         }
-
         // Check Win Method
         CheckWin();
     }
@@ -106,11 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void CheckWin() {
 
+        //
         btn_winner.animate()
                 .scaleX(1.4f)
                 .scaleY(1.4f)
                 .setDuration(2000);
-
+        //
         for (int i = 0; i < winningComb.length; i++) {
             if (btn[winningComb[i][0]].getText() == "X" && btn[winningComb[i][1]].getText() == "X" && btn[winningComb[i][2]].getText() == "X") {
                 btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_winner.setText("Player O Wins!");
             }
         }
-
+        //
         if(Counter == 9){
             btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
             btn_winner.setText("It is a Draw!");
