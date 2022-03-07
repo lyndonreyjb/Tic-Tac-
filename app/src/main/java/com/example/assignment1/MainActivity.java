@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // The pop up button to display the winner
         btn_winner = findViewById(R.id.btn_winner);
 
-        //
+        // To get the buttons ID
         btn[0] = findViewById(R.id.btn_1);
         btn[1] = findViewById(R.id.btn_2);
         btn[2] = findViewById(R.id.btn_3);
@@ -85,13 +85,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
         // Get the id of the buttons
         String btnId = view.getResources().getResourceEntryName(view.getId());
         int num = Integer.parseInt(btnId.substring(btnId.length() - 1, btnId.length()));
-        //
+        // Animation for the buttons
         btn[num - 1].animate().rotation(360).setDuration(3000);
-        //
+        // statement to check if button is empty or not
+        // then change the text to either x or o depending on whose turn
         if (btn[num - 1].getText() == "") {
             Counter++;
             if (Counter % 2 == 0) {
@@ -104,15 +104,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CheckWin();
     }
 
-
     public void CheckWin() {
-
-        //
+        // animation winner pop up
         btn_winner.animate()
                 .scaleX(1.4f)
                 .scaleY(1.4f)
                 .setDuration(2000);
-        //
+        // For loop to check winning combination
         for (int i = 0; i < winningComb.length; i++) {
             if (btn[winningComb[i][0]].getText() == "X" && btn[winningComb[i][1]].getText() == "X" && btn[winningComb[i][2]].getText() == "X") {
                 btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
@@ -123,13 +121,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_winner.setText("Player O Wins!");
             }
         }
-        //
+        // Checking for a tie
         if(Counter == 9){
             btn_winner.setVisibility(findViewById(R.id.btn_winner).VISIBLE);
             btn_winner.setText("It is a Draw!");
         }
     }
-
 }
 
 
